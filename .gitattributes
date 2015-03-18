@@ -1,0 +1,22 @@
+# Set default behavior, in case users don't have core.autocrlf set.
+*        text=auto
+
+# Explicitly declare text files we want to always be normalized and converted 
+# to native line endings on checkout.
+*.ascx   text
+*.aspx   text
+*.config text
+*.cs     text diff=csharp
+*.css    text
+*.html   text diff=html
+*.item   text
+*.js     text
+*.targets text
+*.tt     text
+*.txt    text
+
+*.csproj text merge=union
+*.scproj text merge=union
+
+# Declare files that will always have CRLF line endings on checkout.
+*.sln    text merge=union eol=crlf
