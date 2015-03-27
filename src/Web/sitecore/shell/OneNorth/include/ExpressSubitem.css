@@ -1,0 +1,131 @@
+﻿.express-subitem {
+}
+
+.express-subitem .sub-item-header {
+    border-bottom: 1px solid #aaa;
+    border-top: 1px solid #fff;
+    background-color: #ddf;
+    padding: 3px;
+}
+
+.express-subitem .sub-item-header .title {
+    color: #555;
+    font-weight: bold;
+    height: 18px;
+    float: left;
+    padding-top: 2px;
+}
+
+.express-subitem .no-select {
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+}
+
+.express-subitem .sub-item-content {
+    display: none;
+}
+
+.express-subitem .expanded .sub-item-content {
+    display: block;
+    padding: 5px;
+}
+
+.express-subitem .sub-item-header .button {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.express-subitem .sub-item .delete {
+    margin-left: 20px;
+}
+
+.express-subitem .sub-item .delete img, .express-subitem .sub-item .reset img {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+    margin-top: 2px;
+    cursor: pointer;
+    float: left;
+}
+
+.express-subitem .sub-item-header .button img {
+    border: none;
+    width: 16px;
+    height: 16px;
+}
+
+.express-subitem .sub-item-header .move-up {
+    background-image: url(/~/icon/Applications/16x16/navigate_up.png);
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+    float: right;
+}
+
+.express-subitem .sub-item-header .move-down {
+    background-image: url(/~/icon/Applications/16x16/navigate_down.png);
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+    float: right;
+}
+
+.express-subitem .sub-item-header .expander {
+    background-image: url(/sitecore/shell/themes/standard/Images/expand15x15.gif);
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+    float: right;
+}
+
+.express-subitem .expanded .sub-item-header .expander {
+    background-image: url(/sitecore/shell/themes/standard/Images/collapse15x15.gif);
+}
+
+.express-subitem .clear {
+    clear: both;
+}
+
+.express-subitem .field-container {
+    margin-bottom: 24px;
+}
+
+.express-subitem .defaultFieldEditorsFrameContainer {
+    height: 150px;
+}
+
+.express-subitem .scEditorFieldMarkerInputCell {
+    padding-right: 10px;
+}
+
+.express-subitem .add-new-item {
+    padding-top: 4px;
+}
+
+.express-subitem .sub-item-validation {
+    float: left;
+    background-color: #ccc;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.express-subitem div.red-sub-item-validation {
+    background-color: #ce130a;
+}
+
+.express-subitem div.yellow-sub-item-validation {
+    background-color: #fbc200;
+}
+
+.express-subitem .disabled .sub-item-header {
+    background-color: #bbb;
+}
+
+.express-subitem .disabled .sub-item-header .title {
+    color: #eee;
+}
+
+.express-subitem .disabled .sub-item-header .expander {
+    background-image: none;
+}

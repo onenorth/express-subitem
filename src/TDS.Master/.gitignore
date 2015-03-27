@@ -1,0 +1,6 @@
+# git ignore file
+BuiltFiles_*.txt
+IconCache/*
+Debug/*
+Release/*
+Package_*/*

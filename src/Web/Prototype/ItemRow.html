@@ -1,0 +1,22 @@
+﻿<div class="sub-item{2}" id="ExpressSubitem_{0:N}" itemid="{0}" isnew="{4}" version="{5}">
+    <table style="width:100%;" ondblclick="javascript:return ExpressSubitem_doubleClick(event);" class="no-select">
+        <tr>
+            <td style="width:100%;">
+                <div class="sub-item-header">
+                    <div class="sub-item-validation">
+                        <img src="/sitecore/images/blank.gif" width="4" height="1" /></div>
+                    <div class="title">{1}</div>
+                    <div class="expander button" title="Expand" onclick="javascript:ExpressSubitem_toggleSubItem(event);"></div>
+                    <div class="move-down button" title="Move down" onclick="javascript:ExpressSubitem_moveDown(event);"></div>
+                    <div class="move-up button" title="Move up" onclick="javascript:ExpressSubitem_moveUp(event);"></div>
+                    <div class="clear"></div>
+                </div>
+            </td>
+            <td>
+                <div class="reset button" title="Reset field values to language fallback values" onclick="javascript:ExpressSubitem_resetSubItem(event);"><img src="/~/icon/Applications/16x16/checkbox.png" /></div>
+                <div class="delete button" title="Delete" onclick="javascript:ExpressSubitem_deleteSubItem(event);"><img src="/~/icon/Applications/16x16/delete.png" /></div>
+            </td>
+        </tr>
+    </table>
+    <div id="ExpressSubitemContent_{0:N}" class="sub-item-content">{3}</div>
+</div>
