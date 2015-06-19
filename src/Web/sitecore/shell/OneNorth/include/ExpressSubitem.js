@@ -151,6 +151,14 @@ function ExpressSubitem_getFieldValues(subItem) {
 
         fields.push({ fieldId: ele.attr("fieldId"), value: val });
     });
+    
+    subItem.find(".generallink").each(function () {
+        var ele = $sc(this);
+        var valueHolder = ele.find("input.scContentControl");
+        console.log(ele);
+        console.log(valueHolder);
+        fields.push({ fieldId: ele.attr("fieldId"), value: valueHolder.val() });
+    });
 
     return fields;
 }

@@ -555,6 +555,26 @@ namespace OneNorth.ExpressSubitem.FieldTypes
                             resultText.AppendFormat(Prototypes.Dropdown, field.DisplayName, field.ID, options, Disabled ? "disabled='disabled'" : "", errorMessage, fieldSource);
 
                             break;
+                        case "General Link":
+                            var link = new Link();
+                            
+                            link.ID = string.Format("ExpressSubitem_{0:N}{1:N}", field.ID.Guid, subitem.ID.Guid);
+                            link.Source = field.Source;
+                            link.Disabled = Disabled;
+                            link.SetValue(field.Value);
+
+                            Sitecore.Context.ClientPage.AddControl(this, link);
+
+                            link.ItemLanguage = subitem.Language.Name;
+                            resultText.AppendFormat(Prototypes.StandardWrapper,
+                                field.DisplayName,
+                                link.RenderAsText(), 
+                                link.ID,
+                                field.ID,
+                                RenderMenuButtons(link.ID, field, ReadOnly),
+                                "generallink", 
+                                fieldSource);
+                            break;
                         default:
                             resultText.AppendFormat("<div class=\"unknown-field\">Unknown field type of \"{0}\" for field \"{1}\"</div>", field.Type, field.Name);
 

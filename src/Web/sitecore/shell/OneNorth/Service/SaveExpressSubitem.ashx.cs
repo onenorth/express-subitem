@@ -161,6 +161,7 @@ namespace OneNorth.ExpressSubitem.sitecore.shell.OneNorth.Service
                     case "Datetime":
                     case "Single-Line Text":
                     case "Integer":
+                    case "General Link":
                         return field.Value;
                     case "Droptree":
                     case "Droplink":
