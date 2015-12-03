@@ -1,6 +1,8 @@
 
 # Sitecore: Express Subitem Module Readme
 
+> Note: This module supports Sitecore 8.1+. For Sitecore 7.0, 7.1, 7.2, or 7.5 please see [here](https://github.com/onenorth/express-subitem/tree/sitecore-7.0).
+
 ## Overview
 
 The Express Subitem Module allows content editors to edit multiple child Sitecore items at the same time within the context of the parent item. This field is commonly used to manage lists of related items that exist only within the context of the parent.  A few examples are as follows:
@@ -34,9 +36,7 @@ The following field types are currently supported by the Express Subitem module:
  - Integer
  - Droplink
 
-Additional field types can be added by modifying the source code.
-
-> Note: This module supports Sitecore 7.0, 7.1, 7.2, 7.5.  It has not been tested with Sitecore 8.0
+Additional field types can be added by modifying the source code.  The fields support Sitecore 8.1 language field fallback.
 
 Please see the related [blog post](http://www.onenorth.com/blog/post/sitecore-express-subitem-module) for further information.
 

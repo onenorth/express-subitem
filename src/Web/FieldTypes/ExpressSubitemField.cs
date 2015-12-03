@@ -4,8 +4,10 @@ using Sitecore.Data;
 using Sitecore.Data.Events;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
+using Sitecore.Data.LanguageFallback;
 using Sitecore.Data.Managers;
 using Sitecore.Globalization;
+using Sitecore.Pipelines.GetFieldValue;
 using Sitecore.SecurityModel;
 using Sitecore.Shell.Applications.ContentEditor;
 using Sitecore.Shell.Framework;
@@ -597,7 +599,16 @@ namespace OneNorth.ExpressSubitem.FieldTypes
                 addCommaFlag = true;
             }
 
-            if (field.ContainsStandardValue)
+            if (LanguageFallbackFieldValuesManager.IsValidForFallback(field))
+            {
+                if (addCommaFlag)
+                {
+                    fieldSource.Append(",");
+                }
+
+                fieldSource.Append(Translate.Text("fallback value"));
+            }
+            else if (field.ContainsStandardValue)
             {
                 if (addCommaFlag)
                 {
