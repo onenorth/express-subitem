@@ -22,6 +22,7 @@
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,9 +61,6 @@
       <LastGenOutput>Prototypes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="App_Config\FieldTypes.config">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="Prototype\AddExpressSubitem.html" />
     <None Include="Prototype\Dropdown.html" />
     <None Include="Prototype\ItemRow.html" />
