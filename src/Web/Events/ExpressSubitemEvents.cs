@@ -7,6 +7,7 @@ using Sitecore.SecurityModel;
 using Sitecore.Sites;
 using System;
 using System.Linq;
+using OneNorth.ExpressSubitem.Common;
 
 namespace OneNorth.ExpressSubitem.Events
 {
@@ -108,5 +109,21 @@ namespace OneNorth.ExpressSubitem.Events
 
             return "";
         }
-    }
+
+        /// <summary>
+        /// Refresh a newly created duplicate/copy's Express Subitem Fields
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void OnItemCopied(object sender, EventArgs args)
+        {
+            if (args == null) { return; }
+
+            //var sourceItem = Event.ExtractParameter(args, 0) as Item;
+            var destinationItem = Event.ExtractParameter(args, 1) as Item;
+            Sitecore.Diagnostics.Assert.IsNotNull(destinationItem, "No destination item in parameters");
+
+            destinationItem.RefreshFieldValues();
+        }
+}
 }
