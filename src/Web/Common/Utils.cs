@@ -43,7 +43,7 @@ namespace OneNorth.ExpressSubitem.Common
             foreach (var field in fields)
             {
                 //recalculate value
-                var recalculatedValue = RecalculateFieldValue(item, field.Name) ?? String.Empty;
+                var recalculatedValue = RecalculateFieldValue(item, field.Name) ?? string.Empty;
                 //compare to current value
                 if (item.Fields[field.ID] != null && item.Fields[field.ID].Value != recalculatedValue)
                 {

@@ -75,13 +75,39 @@ namespace OneNorth.ExpressSubitem.sitecore.shell.OneNorth.Service
                                     //The value for the tree is: [Source ID]|[Path to the item]
                                     var values = clientFieldValue.Value.Split(new [] { "|" }, StringSplitOptions.RemoveEmptyEntries);
 
-                                    //var sourceItem = currentItem.Database.GetItem(new ID(values[0]));
-                                    var sourceItem = (values.Length == 2) ? currentItem.Database.GetItem("/" + values[1].TrimStart('/')) : null;
+                                    var sourceItem = currentItem.Database.GetItem(new ID(values[0]));
 
-                                    if (values.Length == 1 || sourceItem == null)
-                                        field.Reset();
-                                    else 
-                                        field.Value = sourceItem.ID.ToString();
+                                    if (sourceItem != null)
+                                    {
+                                        if (values.Length == 1)
+                                        {
+                                            field.Reset();
+                                        }
+                                        else
+                                        {
+                                            var selectedItemName = values[1].Split('/').LastOrDefault();
+
+                                            //Get Source Path then add the Path to the item
+                                            var itemPath = sourceItem.Parent.Parent.Paths.Path + "/" + values[1];
+
+                                            //Remove the display name from the item path
+                                            itemPath = itemPath.Replace(selectedItemName, "");
+
+                                            //Get The Parent Tree Item
+                                            var dropTreeSelectedItemParent = sourceItem.Database.GetItem(itemPath);
+
+                                            var childItem = (from i in dropTreeSelectedItemParent.Children
+                                                              where i.DisplayName == selectedItemName
+                                                              select i).FirstOrDefault();
+
+                                            if (childItem != null)
+                                            {
+                                                field.Value = childItem.ID.ToString();
+                                            }
+
+                                        }
+                                    }
+
                                     break;
                                 case "File":
                                 case "Image":
