@@ -35,6 +35,7 @@ The following field types are currently supported by the Express Subitem module:
  - Single-Line Text
  - Integer
  - Droplink
+ - Checkbox
 
 Additional field types can be added by modifying the source code.  The fields support Sitecore 8.1 language field fallback.
 

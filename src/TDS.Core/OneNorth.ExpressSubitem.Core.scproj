@@ -46,14 +46,14 @@
     <RecursiveDeployAction>Ignore</RecursiveDeployAction>
     <PackageAuthor>One North Interactive</PackageAuthor>
     <PackagePublisher>One North Interactive</PackagePublisher>
-    <PackageVersion>2.0.3</PackageVersion>
+    <PackageVersion>2.0.4</PackageVersion>
     <PackageReadme>
     </PackageReadme>
     <SitecoreAssemblyPath>../../lib</SitecoreAssemblyPath>
     <GeneratePackage>True</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <AddDateTimeToPackageName>False</AddDateTimeToPackageName>
-    <PackageName>OneNorth.ExpressSubitem.Core.2.0.3</PackageName>
+    <PackageName>OneNorth.ExpressSubitem.Core.2.0.4</PackageName>
     <EnableValidations>False</EnableValidations>
     <ValidationSettingsFilePath>.\OneNorth.ExpressSubitem.Core_Release.xml</ValidationSettingsFilePath>
     <PackageExcludeCode>False</PackageExcludeCode>
