@@ -70,6 +70,7 @@
     <None Include="Prototype\Tree.html" />
     <None Include="Prototype\StandardWrapper.html" />
     <None Include="Prototype\ItemRowDisabled.html" />
+    <Content Include="Prototype\Checkbox.html" />
     <Content Include="sitecore\shell\OneNorth\include\ExpressSubitem.css" />
     <Content Include="sitecore\shell\OneNorth\include\ExpressSubitem.js" />
     <Content Include="sitecore\shell\OneNorth\include\json2.js" />

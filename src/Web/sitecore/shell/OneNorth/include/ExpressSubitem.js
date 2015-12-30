@@ -152,6 +152,13 @@ function ExpressSubitem_getFieldValues(subItem) {
         fields.push({ fieldId: ele.attr("fieldId"), value: val });
     });
 
+    subItem.find(".checkbox input").each(function () {
+        var ele = $sc(this);
+
+        //This "name" of the input is really the fieldId
+        fields.push({ fieldId: ele.attr("name"), value: ((ele[0].checked) ? ele.val() : "") });
+    });
+
     return fields;
 }
 

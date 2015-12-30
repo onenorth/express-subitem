@@ -557,6 +557,11 @@ namespace OneNorth.ExpressSubitem.FieldTypes
                             resultText.AppendFormat(Prototypes.Dropdown, field.DisplayName, field.ID, options, Disabled ? "disabled='disabled'" : "", errorMessage, fieldSource);
 
                             break;
+                        case "Checkbox":
+                            var @checked = ((CheckboxField) field).Checked;
+                            resultText.AppendFormat(Prototypes.Checkbox, field.DisplayName, field.ID, @checked ? "checked" : "", Disabled ? "disabled='disabled'" : "", fieldSource);
+
+                            break;
                         default:
                             resultText.AppendFormat("<div class=\"unknown-field\">Unknown field type of \"{0}\" for field \"{1}\"</div>", field.Type, field.Name);
 

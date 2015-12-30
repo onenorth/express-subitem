@@ -121,6 +121,9 @@
   <data name="AddExpressSubitem" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Prototype\AddExpressSubitem.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Checkbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Prototype\Checkbox.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Date" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Prototype\Date.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
