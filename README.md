@@ -13,10 +13,13 @@ The Express Subitem Module allows content editors to edit multiple child Sitecor
  3. Schedule related to an Event
 
 This field improves the content editing experience because the content administrator does not need to navigate to the child items to edit related information.
+
 All child items managed by this field are stored in subfolders under the parent.
 The subfolders are hidden from user roles to prevent clutter in the content tree.
 Users are unable to edit the child items directly in favor of editing them through the Express Subitem control.
 Administrators are able to view the subfolders and edit the child items directly if needed.
+
+Please see the related [blog post](http://www.onenorth.com/blog/post/sitecore-express-subitem-module) for further information.
 
 ### Express Subitem - Collapsed
 ![Express Subitem - Collapsed](https://raw.github.com/onenorth/express-subitem/master/img/ExpressSubitemCollapsed.jpg)
@@ -42,8 +45,6 @@ The following field types are currently supported by the Express Subitem module:
  - Checkbox
 
 Additional field types can be added by modifying the source code.  The fields support Sitecore 8.1 language field fallback.
-
-Please see the related [blog post](http://www.onenorth.com/blog/post/sitecore-express-subitem-module) for further information.
 
 ## Installation
 
