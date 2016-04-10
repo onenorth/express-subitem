@@ -13,6 +13,10 @@ The Express Subitem Module allows content editors to edit multiple child Sitecor
  3. Schedule related to an Event
 
 This field improves the content editing experience because the content administrator does not need to navigate to the child items to edit related information.
+All child items managed by this field are stored in subfolders under the parent.
+The subfolders are hidden from user roles to prevent clutter in the content tree.
+Users are unable to edit the child items directly in favor of editing them through the Express Subitem control.
+Administrators are able to view the subfolders and edit the child items directly if needed.
 
 ### Express Subitem - Collapsed
 ![Express Subitem - Collapsed](https://raw.github.com/onenorth/express-subitem/master/img/ExpressSubitemCollapsed.jpg)
