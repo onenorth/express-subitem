@@ -61,31 +61,38 @@ Below, you will find a list of the Sitecore items used to configure the Express 
 	 - /sitecore/system/Settings/Validation Rules/Field Types/Express Subitem
 	 - /sitecore/system/Settings/Validation Rules/Field Rules/External/Express Subitem Validation
 
-### Configuration Files
+### Configuration File
 
-The Express Subitem Module requires a special change to the Sitecore configuration files. Normally, all configuration updates are done in files located in **/app_config/include**. The Express Subitem Module requires a change to the **/app_config/FieldTypes.config** file.
-
-A new field type needs to be added to **/app_config/FieldTypes.config**. This field type is named **Express Subitem** and should be added to the **< configuration>** element of the **FieldTypes.Config** file.
-
-    <!-- Custom Types-->
-    <fieldType name="Express Subitem" type="Sitecore.Data.Fields.MultilistField,Sitecore.Kernel" />
-
-There are also some configuration changes needed to be made in the **/app_config/include** folder.
+The following configuration is included in the /app_config/include/OneNorth.ExpressSubitem.config. No changes are required to this file.
 
     <configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
       <sitecore>
         <pipelines>
           <renderContentEditor>
             <processor type="OneNorth.ExpressSubitem.Pipelines.ExpressSubitemCustomizationsPipeline, OneNorth.ExpressSubitem"
-                   patch:before="*[1]" />
+                       patch:before="*[1]" />
           </renderContentEditor>
         </pipelines>
         <events>
           <event name="item:saved">
-            <handler type="OneNorth.ExpressSubitem.Events.ExpressSubitemEvents, OneNorth.ExpressSubitem" 
-                 method="OnItemSaved"/>
+            <handler type="OneNorth.ExpressSubitem.Events.ExpressSubitemEvents, OneNorth.ExpressSubitem" method="OnItemSaved"/>
+          </event>
+          <event name="item:copied">
+            <!--refresh exress subitem fields-->
+            <handler type="OneNorth.ExpressSubitem.Events.ExpressSubitemEvents, OneNorth.ExpressSubitem" method="OnItemCopied"/>
           </event>
         </events>
+        <processors>
+          <!--cloning needs a pipeline step, as item:copied nor any other events fire-->
+          <uiCloneItems>
+            <!--refresh express subitem fields-->
+            <processor mode="on" type="OneNorth.ExpressSubitem.Pipelines.CloneItem, OneNorth.ExpressSubitem" method="Execute"
+                       patch:after="processor[@type='Sitecore.Shell.Framework.Pipelines.CloneItems,Sitecore.Kernel' and @method='Execute']"/>
+          </uiCloneItems>
+        </processors>
+        <fieldTypes>
+          <fieldType name="Express Subitem" type="Sitecore.Data.Fields.MultilistField,Sitecore.Kernel" />
+        </fieldTypes>
       </sitecore>
     </configuration>
 
