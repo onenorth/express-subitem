@@ -15,26 +15,28 @@ using Sitecore.Web.UI.HtmlControls.Data;
 using Sitecore.Web.UI.Sheer;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Web.UI.HtmlControls;
+using Sitecore.Workflows;
 
 namespace OneNorth.ExpressSubitem.FieldTypes
 {
     public class ExpressSubitemField : Input, IContentField
     {
         public static HashSet<string> PublishingFields = new HashSet<string>(
-            new [] 
-            { 
-                "__valid to", 
-                "__hide version", 
-                "__valid from", 
-                "__publish", 
-                "__never publish", 
-                "__unpublish", 
+            new[]
+            {
+                "__valid to",
+                "__hide version",
+                "__valid from",
+                "__publish",
+                "__never publish",
+                "__unpublish",
                 "__workflow state",
                 "__workflow",
-                "__lock" 
+                "__lock"
             });
         static readonly ID FOLDER_ITEM_TEMPLATE_ID = new ID("{A87A00B1-E6DB-45AB-8B54-636FEC3B5523}");
 
@@ -194,9 +196,9 @@ namespace OneNorth.ExpressSubitem.FieldTypes
             if (!IsContentItem())
             {
                 var baseDiv = new HtmlGenericControl("div")
-                    {
-                        InnerText = "Express Subitems can not be edited on __Standard Values"
-                    };
+                {
+                    InnerText = "Express Subitems can not be edited on __Standard Values"
+                };
 
                 Controls.Add(baseDiv);
             }
@@ -227,16 +229,16 @@ namespace OneNorth.ExpressSubitem.FieldTypes
                 foreach (var subitem in subitems)
                 {
                     var row = new Literal
-                        {
-                            Text = string.Format((Disabled) ? Prototypes.ItemRowDisabled : Prototypes.ItemRow, subitem.ID.Guid, subitem.DisplayName, "", "", false, ItemVersion)
-                        };
+                    {
+                        Text = string.Format((Disabled) ? Prototypes.ItemRowDisabled : Prototypes.ItemRow, subitem.ID.Guid, subitem.DisplayName, "", "", false, ItemVersion)
+                    };
 
                     baseDiv.Controls.Add(row);
                 }
 
                 if (!Disabled)
                 {
-                    var addNew = new Literal {Text = string.Format(Prototypes.AddExpressSubitem, ID)};
+                    var addNew = new Literal { Text = string.Format(Prototypes.AddExpressSubitem, ID) };
                     baseDiv.Controls.Add(addNew);
                 }
 
@@ -250,6 +252,16 @@ namespace OneNorth.ExpressSubitem.FieldTypes
             return CurrentItem.Name != "__Standard Values";
         }
 
+        public static WorkflowResult ChangeWorkflowState(Item item, ID workflowStateId)
+        {
+            // Move container folder to approved state
+            using (new EditContext(item))
+            {
+                item[FieldIDs.WorkflowState] = workflowStateId.ToString();
+            }
+            return new WorkflowResult(true, "OK", workflowStateId);
+        }
+
         /// <summary>
         /// The aggrigate items under the folder are the definitive copy of what should go into the list of aggrigate items.
         /// </summary>
@@ -259,8 +271,8 @@ namespace OneNorth.ExpressSubitem.FieldTypes
             var fieldName = CurrentItem.Fields[new ID(FieldID)].Name;
 
             var containerFolder = (from c in CurrentItem.Children
-                                    where c.Name == fieldName
-                                    select c).FirstOrDefault();
+                                   where c.Name == fieldName
+                                   select c).FirstOrDefault();
 
             //Create the container
             if (containerFolder == null)
@@ -303,10 +315,16 @@ namespace OneNorth.ExpressSubitem.FieldTypes
                 }
             }
 
-            //Make sure the folder has a version for publishing
+            // Make sure the folder has a version for publishing and
+            // change the workflow state to NMCOM workflow state "Approved"
             if (containerFolder.Versions.Count == 0)
             {
                 containerFolder.Versions.AddVersion();
+
+                Database master = Sitecore.Configuration.Factory.GetDatabase("master");
+                // NMCOM workflow state approved
+                var workflowStateId = master.GetItem("{FCA998C5-0CC3-4F91-94D8-0A4E6CAECE88}").ID;
+                ChangeWorkflowState(containerFolder, workflowStateId);
             }
 
             //Make sure all child items have a version. This will ensure the item exists in the language of the parent
@@ -362,7 +380,7 @@ namespace OneNorth.ExpressSubitem.FieldTypes
         /// <summary>
         /// Builds content for internal fields
         /// </summary>
-        /// <param name="subitem"></param>
+        /// <param name="subitem">One of the collapsable subitems</param>
         /// <param name="resultText"></param>
         private void InternalFieldContentBuilder(Item subitem, StringBuilder resultText)
         {
@@ -371,6 +389,7 @@ namespace OneNorth.ExpressSubitem.FieldTypes
             fields.ReadAll();
             fields.Sort();
 
+            // each field in the collapsable subitem
             foreach (Field field in fields)
             {
                 if (!field.Name.StartsWith("__"))
@@ -495,9 +514,9 @@ namespace OneNorth.ExpressSubitem.FieldTypes
                             Sitecore.Context.ClientPage.AddControl(this, dateCtrl);
                             dateCtrl.SetValue(field.Value);
 
-                            resultText.AppendFormat(Prototypes.Date, 
-                                field.DisplayName, 
-                                dateCtrl.RenderAsText(), 
+                            resultText.AppendFormat(Prototypes.Date,
+                                field.DisplayName,
+                                dateCtrl.RenderAsText(),
                                 dateCtrl.ID,
                                 field.ID,
                                 RenderMenuButtons(dateCtrl.ID, field, ReadOnly),
@@ -514,7 +533,7 @@ namespace OneNorth.ExpressSubitem.FieldTypes
                             richTextCtrl.Disabled = Disabled;
 
                             Sitecore.Context.ClientPage.AddControl(this, richTextCtrl);
-							// Fixing Sitecore bug for no value field
+                            // Fixing Sitecore bug for no value field
                             if (field.Value == "__#!$No value$!#__")
                             {
                                 using (new SecurityDisabler())
@@ -533,6 +552,23 @@ namespace OneNorth.ExpressSubitem.FieldTypes
                                 richTextCtrl.ID,
                                 field.ID,
                                 RenderMenuButtons(richTextCtrl.ID, field, ReadOnly),
+                                fieldSource);
+
+                            break;
+                        case "Multi-Line Text":
+                            var multilineTextCtrl = new Sitecore.Shell.Applications.ContentEditor.Memo();
+                            multilineTextCtrl.ItemLanguage = ItemLanguage;
+                            multilineTextCtrl.ID = string.Format("ExpressSubitem_{0:N}{1:N}", field.ID.Guid, subitem.ID.Guid);
+                            multilineTextCtrl.Disabled = Disabled;
+
+                            Sitecore.Context.ClientPage.AddControl(this, multilineTextCtrl);
+
+                            multilineTextCtrl.Value = field.Value;
+
+                            resultText.AppendFormat(Prototypes.MultiLineText,
+                                field.DisplayName,
+                                multilineTextCtrl.RenderAsText(),
+                                field.ID,
                                 fieldSource);
 
                             break;
@@ -732,7 +768,7 @@ namespace OneNorth.ExpressSubitem.FieldTypes
             resetDialog.Add("la", CurrentLanguage.ToString());
             resetDialog.Add("vs", ItemVersion);
 
-            SheerResponse.ShowModalDialog(resetDialog.ToString(), false);            
+            SheerResponse.ShowModalDialog(resetDialog.ToString(), false);
         }
 
         /// <summary>
@@ -757,14 +793,14 @@ namespace OneNorth.ExpressSubitem.FieldTypes
         {
             var itemToMoveUp = CurrentItem.Database.GetItem(new ID(itemId), CurrentLanguage);
 
-            Sorting.MoveUp(new [] { itemToMoveUp });
+            Sorting.MoveUp(new[] { itemToMoveUp });
         }
 
         public void MoveDownSubItem(string itemId)
         {
             var itemToMoveDown = CurrentItem.Database.GetItem(new ID(itemId), CurrentLanguage);
 
-            Sorting.MoveDown(new [] { itemToMoveDown });
+            Sorting.MoveDown(new[] { itemToMoveDown });
         }
         #endregion
 

@@ -152,6 +152,14 @@ function ExpressSubitem_getFieldValues(subItem) {
         fields.push({ fieldId: ele.attr("fieldId"), value: val });
     });
 
+    subItem.find(".multiline-text").each(function () {
+        var ele = $sc(this);
+        var field = ele.find("textarea");
+        var val = field.val();
+
+        fields.push({ fieldId: ele.attr("fieldId"), value: val });
+    });
+
     return fields;
 }
 
