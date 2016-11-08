@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -27,14 +28,16 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>.\Debug\</OutputPath>
     <RecursiveDeployAction>Ignore</RecursiveDeployAction>
-    <SitecoreAccessGuid>c00e63c5-d153-40e8-99c2-d92f51021b2d</SitecoreAccessGuid>
-    <InstallSitecoreConnector>True</InstallSitecoreConnector>
+    <SitecoreAccessGuid>
+    </SitecoreAccessGuid>
+    <InstallSitecoreConnector>False</InstallSitecoreConnector>
     <SitecoreDeployFolder>
     </SitecoreDeployFolder>
     <SitecoreWebUrl>
     </SitecoreWebUrl>
     <EnableValidations>False</EnableValidations>
     <ValidationSettingsFilePath>.\OneNorth.ExpressSubitem.Master_Debug.xml</ValidationSettingsFilePath>
+    <DisableFileDeployment>False</DisableFileDeployment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -42,16 +45,16 @@
     <RecursiveDeployAction>Ignore</RecursiveDeployAction>
     <PackageAuthor>One North Interactive</PackageAuthor>
     <PackagePublisher>One North Interactive</PackagePublisher>
-    <PackageVersion>2.0.4</PackageVersion>
+    <PackageVersion>2.0.5</PackageVersion>
     <PackageReadme>Installs the Express Subitem control. There are a few additional deploy steps after installing the package:
 
 1) Install the package for the master database.
-2) Backup and replace the .config files in /App_Config and /App_Config/Include that this package needs to update. These files will have a name that looks like "*.config.OneNorth.ExpressSubitem.Master..."</PackageReadme>
+2) Backup and replace the .config files in /App_Config and /App_Config/Include that this package needs to update. These files will have a name that looks like &amp;quot;*.config.OneNorth.ExpressSubitem.Master...&amp;quot;</PackageReadme>
     <SitecoreAssemblyPath>../../lib</SitecoreAssemblyPath>
     <GeneratePackage>True</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <AddDateTimeToPackageName>False</AddDateTimeToPackageName>
-    <PackageName>OneNorth.ExpressSubitem.Master.2.0.4</PackageName>
+    <PackageName>OneNorth.ExpressSubitem.Master.2.0.5</PackageName>
     <EnableValidations>False</EnableValidations>
     <ValidationSettingsFilePath>.\OneNorth.ExpressSubitem.Master_Release.xml</ValidationSettingsFilePath>
     <PackageExcludeCode>False</PackageExcludeCode>
@@ -119,5 +122,5 @@
   <ItemGroup>
     <ExcludedAssemblies Include="OneNorth.ExpressSubitem.dll" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
 </Project>

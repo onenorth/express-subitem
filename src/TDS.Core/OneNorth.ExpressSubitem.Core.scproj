@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -39,6 +40,7 @@
     </SitecoreWebUrl>
     <EnableValidations>False</EnableValidations>
     <ValidationSettingsFilePath>.\OneNorth.ExpressSubitem.Core_Debug.xml</ValidationSettingsFilePath>
+    <DisableFileDeployment>False</DisableFileDeployment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -46,14 +48,14 @@
     <RecursiveDeployAction>Ignore</RecursiveDeployAction>
     <PackageAuthor>One North Interactive</PackageAuthor>
     <PackagePublisher>One North Interactive</PackagePublisher>
-    <PackageVersion>2.0.4</PackageVersion>
+    <PackageVersion>2.0.5</PackageVersion>
     <PackageReadme>
     </PackageReadme>
     <SitecoreAssemblyPath>../../lib</SitecoreAssemblyPath>
     <GeneratePackage>True</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <AddDateTimeToPackageName>False</AddDateTimeToPackageName>
-    <PackageName>OneNorth.ExpressSubitem.Core.2.0.4</PackageName>
+    <PackageName>OneNorth.ExpressSubitem.Core.2.0.5</PackageName>
     <EnableValidations>False</EnableValidations>
     <ValidationSettingsFilePath>.\OneNorth.ExpressSubitem.Core_Release.xml</ValidationSettingsFilePath>
     <PackageExcludeCode>False</PackageExcludeCode>
@@ -88,5 +90,5 @@
       <ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization>
     </SitecoreItem>
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
 </Project>
