@@ -536,6 +536,22 @@ namespace OneNorth.ExpressSubitem.FieldTypes
                                 fieldSource);
 
                             break;
+                            case "Multi-Line Text":
+                                var multilineTextCtrl = new Sitecore.Shell.Applications.ContentEditor.Memo();
+                                multilineTextCtrl.ItemLanguage = ItemLanguage;
+                                multilineTextCtrl.ID = string.Format("ExpressSubitem_{0:N}{1:N}", field.ID.Guid, subitem.ID.Guid);
+                                multilineTextCtrl.Disabled = Disabled;
+
+                                Sitecore.Context.ClientPage.AddControl(this, multilineTextCtrl);
+
+                                multilineTextCtrl.Value = field.Value;
+
+                                resultText.AppendFormat(Prototypes.MultiLineText,
+                                    field.DisplayName,
+                                    multilineTextCtrl.RenderAsText(),
+                                    field.ID,
+                                    fieldSource);
+                            break;
                         case "Single-Line Text":
                         case "Integer":
                             resultText.AppendFormat(Prototypes.TextBox, field.DisplayName, field.ID, field.Value, Disabled ? "disabled='disabled'" : "", fieldSource);
