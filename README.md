@@ -31,6 +31,7 @@ The following field types are currently supported by the Express Subitem module:
  - Date
  - Rich Text
  - Single-Line Text
+ - Multi-Line Text
  - Integer
  - Droplink
 

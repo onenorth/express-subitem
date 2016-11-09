@@ -22,6 +22,7 @@
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,9 +61,6 @@
       <LastGenOutput>Prototypes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="App_Config\FieldTypes.config">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="Prototype\AddExpressSubitem.html" />
     <None Include="Prototype\Dropdown.html" />
     <None Include="Prototype\ItemRow.html" />
@@ -72,6 +70,7 @@
     <None Include="Prototype\Tree.html" />
     <None Include="Prototype\StandardWrapper.html" />
     <None Include="Prototype\ItemRowDisabled.html" />
+    <None Include="Prototype\MultiLineText.html" />
     <Content Include="sitecore\shell\OneNorth\include\ExpressSubitem.css" />
     <Content Include="sitecore\shell\OneNorth\include\ExpressSubitem.js" />
     <Content Include="sitecore\shell\OneNorth\include\json2.js" />

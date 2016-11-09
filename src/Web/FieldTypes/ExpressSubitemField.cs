@@ -536,7 +536,7 @@ namespace OneNorth.ExpressSubitem.FieldTypes
                                 fieldSource);
 
                             break;
-                            case "Multi-Line Text":
+                        case "Multi-Line Text":
                                 var multilineTextCtrl = new Sitecore.Shell.Applications.ContentEditor.Memo();
                                 multilineTextCtrl.ItemLanguage = ItemLanguage;
                                 multilineTextCtrl.ID = string.Format("ExpressSubitem_{0:N}{1:N}", field.ID.Guid, subitem.ID.Guid);
