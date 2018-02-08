@@ -1,7 +1,9 @@
 
 # Sitecore: Express Subitem Module Readme
 
-> Note: This module supports Sitecore 8.1+. For Sitecore 7.0, 7.1, 7.2, or 7.5 please see [here](https://github.com/onenorth/express-subitem/tree/sitecore-7.0).
+> Note: This module supports Sitecore 9.0+. 
+> * For Sitecore 8.1+ please see [here](https://github.com/onenorth/express-subitem/tree/sitecore-8.1).
+> * For Sitecore 7.0, 7.1, 7.2, or 7.5 please see [here](https://github.com/onenorth/express-subitem/tree/sitecore-7.0).
 
 ## Overview
 

@@ -332,7 +332,7 @@ namespace OneNorth.ExpressSubitem.FieldTypes
     /// <param name="id"></param>
     public void LoadContent(string id)
     {
-      var subitem = CurrentItem.Database.GetItem(new ID(id), CurrentLanguage, new Sitecore.Data.Version(ItemVersion));
+      var subitem = CurrentItem.Database.GetItem(new ID(id), CurrentLanguage, Sitecore.Data.Version.Parse(ItemVersion));
 
       //See if this version exists
       if (!(from i in subitem.Versions.GetVersions()

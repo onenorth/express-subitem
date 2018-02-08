@@ -49,7 +49,7 @@ namespace OneNorth.ExpressSubitem.sitecore.shell.OneNorth.Service
 
                 var editingLanguage = !string.IsNullOrEmpty(itemDetails.Language) ? LanguageManager.GetLanguage(itemDetails.Language) : LanguageManager.DefaultLanguage;
 
-                var itemVersion = !string.IsNullOrEmpty(itemDetails.Version) ? new Sitecore.Data.Version(itemDetails.Version) : new Sitecore.Data.Version(1);
+                var itemVersion = !string.IsNullOrEmpty(itemDetails.Version) ? Sitecore.Data.Version.Parse(itemDetails.Version) : Sitecore.Data.Version.Parse(1);
 
                 //Load the item
                 var currentItem = Context.ContentDatabase.GetItem(new ID(itemDetails.ItemId), editingLanguage, itemVersion);

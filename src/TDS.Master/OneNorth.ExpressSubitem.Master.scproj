@@ -45,7 +45,7 @@
     <RecursiveDeployAction>Ignore</RecursiveDeployAction>
     <PackageAuthor>One North Interactive</PackageAuthor>
     <PackagePublisher>One North Interactive</PackagePublisher>
-    <PackageVersion>2.0.5</PackageVersion>
+    <PackageVersion>3.0.0</PackageVersion>
     <PackageReadme>Installs the Express Subitem control. There are a few additional deploy steps after installing the package:
 
 1) Install the package for the master database.
@@ -54,7 +54,7 @@
     <GeneratePackage>True</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <AddDateTimeToPackageName>False</AddDateTimeToPackageName>
-    <PackageName>OneNorth.ExpressSubitem.Master.2.0.5</PackageName>
+    <PackageName>OneNorth.ExpressSubitem.Master.3.0.0</PackageName>
     <EnableValidations>False</EnableValidations>
     <ValidationSettingsFilePath>.\OneNorth.ExpressSubitem.Master_Release.xml</ValidationSettingsFilePath>
     <PackageExcludeCode>False</PackageExcludeCode>

@@ -81,8 +81,8 @@ namespace OneNorth.ExpressSubitem {
         ///            &lt;td class=&quot;field-marker scEditorFieldMarkerBarCell&quot;&gt;&lt;img src=&quot;/sitecore/images/blank.gif&quot; width=&quot;4px&quot; height=&quot;1px&quot;&gt;&lt;/td&gt;
         ///            &lt;td class=&quot;scEditorFieldMarkerInputCell&quot;&gt;
         ///                &lt;div style=&quot;&quot; class=&quot;scCheckBox&quot;&gt;
-        ///                    &lt;input class=&quot;scContentControlCheckbox&quot; type=&quot;checkbox&quot; name=&quot;{1}&quot; value=&quot;1&quot; {3} &gt;
-        ///                 [rest of string was truncated]&quot;;.
+        ///                    &lt;input class=&quot;scContentControlCheckbox&quot; type=&quot;checkbox&quot; name=&quot;{1}&quot; value=&quot;1&quot; {2} {3} &gt;
+        ///             [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Checkbox {
             get {
